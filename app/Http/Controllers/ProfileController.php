@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\User;
 class ProfileController extends Controller
 {
-    public function index($user)
-    {
-        $user = User::findOrFail($user);
+    public function index(\App\User $user)
+    { 
+        return view('home' , compact('user'));
+    }
 
-        return view('home' , ['user' => $user]);
+    public function edit(\App\User $user)
+    { 
+        return view('profile.edit' , compact('user'));
     }
 }
