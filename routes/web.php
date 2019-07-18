@@ -17,17 +17,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-#Profile Routes
+//Profile Routes
 
 Route::get('/profile/{user}', 'ProfileController@index')->name('profile.show');
 
+Route::patch('/profile/update/{user}' , 'ProfileController@update')->name('profile.update');
+
 Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
 
-
-#Post Routes
+//Post Routes
 
 Route::get('/post/create', 'PostController@create')->name('post.create');
 
 Route::post('/post/store', 'PostController@store')->name('post.store');
 
 Route::get('/post/show/{post}', 'PostController@show')->name('post.show');
+
+// follow Route 
+
+Route::post('/follow/{{user}}', 'FollowsController@store');
