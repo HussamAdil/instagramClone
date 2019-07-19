@@ -1770,15 +1770,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userId'],
+  props: ['userId', 'follows'],
   mounted: function mounted() {
     console.log('Component mounted.');
   },
+  data: function data() {
+    return {
+      status: this.follows
+    };
+  },
   methods: {
     FollowUser: function FollowUser() {
+      var _this = this;
+
       axios.post('/follow/' + this.userId).then(function (response) {
-        alert(response.data);
+        _this.status = !_this.status;
+        console.log(response.data);
+      })["catch"](function (errors) {
+        if (errors.response.status === 401) {
+          window.location = '/login';
+        }
       });
+    }
+  },
+  computed: {
+    buttonText: function buttonText() {
+      return this.status ? ' Unfollow ' : ' Follow ';
     }
   }
 });
@@ -37087,7 +37104,11 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c(
       "button",
-      { staticClass: "ml-5 btn btn-primary", on: { click: _vm.FollowUser } },
+      {
+        staticClass: "ml-5 btn btn-primary",
+        domProps: { textContent: _vm._s(_vm.buttonText) },
+        on: { click: _vm.FollowUser }
+      },
       [_vm._v(" Follow ")]
     )
   ])
@@ -49418,8 +49439,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\instagramClone\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\instagramClone\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\xampp\htdocs\instagramClone\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\instagramClone\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
