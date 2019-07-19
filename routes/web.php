@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
 
 Auth::routes();
 
@@ -26,7 +24,7 @@ Route::patch('/profile/update/{user}' , 'ProfileController@update')->name('profi
 Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
 
 //Post Routes
-
+Route::get('/' , 'PostController@index');
 Route::get('/post/create', 'PostController@create')->name('post.create');
 
 Route::post('/post/store', 'PostController@store')->name('post.store');
