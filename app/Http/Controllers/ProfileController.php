@@ -13,7 +13,7 @@ class ProfileController extends Controller
 
     { 
         $follows = ( auth()->user() )  ? auth()->user()->following->contains($user->id) : false;
-         
+        
         return view('home' , compact('user' ,'follows'));
 
     }
