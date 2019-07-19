@@ -35,4 +35,4 @@ Route::get('/post/show/{post}', 'PostController@show')->name('post.show');
 
 // follow Route 
 
-Route::post('/follow/{{user}}', 'FollowsController@store');
+Route::post('/follow/{user}', 'FollowsController@store');

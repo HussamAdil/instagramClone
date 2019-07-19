@@ -11,7 +11,7 @@
            <div class=" d-flex  align-items-center pb-3"> 
                <div class="h4">{{ $user->username}} </div>
           
-                <follow-Button></follow-Button>
+           <follow-Button user-id="{{$user->id}}" ></follow-Button>
            </div>
            </div>
           

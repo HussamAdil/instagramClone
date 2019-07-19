@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class FollowsController extends Controller
 {
-    public function store()
+    public function store(User $user)
     {
-        return 'okay';
+         
+        return $user->username;
     }
 }
